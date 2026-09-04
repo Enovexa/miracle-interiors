@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Miracle Interiors</title>
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Jost:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --green-900: #182e0d;
+      --green-800: #2c5916;
+      --green-700: #3f7a1f;
+      --gold-500: #ffdf5c;
+      --gold-300: #f0e2ab;
+      --cream-50: #faf6ea;
+      --ink-900: #14220b;
+      --nav-h: 175px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream-50);
+      color: var(--ink-900);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    @keyframes fadeUpBg {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUpText {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUpOnScroll {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeUpOnScroll 0.8s ease-out forwards;
+    }
+
+    /* ---- Header / Nav ---- */
+    header.site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 4vw, 56px);
+      transition: background .3s ease, box-shadow .3s ease, height .3s ease;
+    }
+
+    header.site-nav.scrolled {
+      background: transparent;
+      height: 135px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .brand img {
+      height: 172px;
+      width: auto;
+      transform: scaleX(1.15);
+      transform-origin: left center;
+      transition: height .3s ease;
+    }
+
+    header.site-nav.scrolled .brand img {
+      height: 130px;
+    }
+
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 2.6vw, 42px);
+    }
+
+    nav.nav-links a {
+      position: relative;
+      font-size: 14px;
+      letter-spacing: .10em;
+      color: var(--gold-300);
+      padding: 6px 0;
+      transition: color .25s ease;
+    }
+
+    nav.nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--gold-500);
+      transition: width .3s ease;
+    }
+
+    nav.nav-links a:hover {
+      color: var(--gold-500);
+    }
+
+    nav.nav-links a.active {
+      color: var(--gold-500);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      width: 26px;
+      height: 1.5px;
+      background: var(--gold-500);
+      display: block;
+    }
+
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 34, 11, .5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+      z-index: 90;
+    }
+
+    .nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width:760px) {
+      nav.nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: auto;
+        width: min(78vw, 300px);
+        height: 100vh;
+        background: var(--green-800);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        max-height: none;
+        overflow-y: auto;
+        padding-top: 90px;
+        transform: translateX(100%);
+        transition: transform .4s ease;
+        box-shadow: -14px 0 30px rgba(20, 34, 11, .3);
+        z-index: 200;
+      }
+
+      nav.nav-links.open {
+        transform: translateX(0);
+      }
+
+      nav.nav-links a {
+        width: 100%;
+        padding: 16px 28px;
+        border-top: 1px solid rgba(255, 223, 92, .12);
+      }
+
+      .nav-toggle {
+        display: flex;
+        position: relative;
+        z-index: 210;
+      }
+    }
+
+    /* ---- Page hero (Contact page - different bg and copy) ---- */
+    .page-hero {
+      margin-top: 0;
+      min-height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      animation: fadeUpBg 1.2s ease-out forwards;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -8%;
+      height: 116%;
+      background-image: url('https://images.pexels.com/photos/29302959/pexels-photo-29302959.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, 0) 22%),
+        linear-gradient(90deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, .4) 46%, rgba(0, 0, 0, .22) 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 0) 40%);
+      z-index: 1;
+    }
+
+    .page-hero-inner {
+      width: 100%;
+      padding: 22vh clamp(24px, 6vw, 80px) 12vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero-inner .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold-300);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.1s forwards;
+    }
+
+    .page-hero-inner h1 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(2rem, 5.4vw, 4.4rem);
+      line-height: 1.16;
+      letter-spacing: .01em;
+      color: var(--cream-50);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.25s forwards;
+    }
+
+    .page-hero-inner p {
+      margin-top: 28px;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 42ch;
+      color: rgba(250, 246, 234, .82);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.45s forwards;
+    }
+
+    .page-hero-crumbs {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(250, 246, 234, .6);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.6s forwards;
+    }
+
+    .page-hero-crumbs a:hover {
+      color: var(--gold-500);
+    }
+
+    .page-hero-crumbs span {
+      color: var(--gold-500);
+    }
+
+    @media (max-width:640px) {
+      .page-hero {
+        min-height: 56vh;
+      }
+
+      .page-hero-inner {
+        padding: 20vh 24px 10vh;
+      }
+    }
+
+    /* ---- Contact Form Section (Two Column Layout) ---- */
+    .contact-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      min-height: 600px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(24, 46, 13, .12);
+    }
+
+    .contact-sidebar {
+      background-image: url('https://images.pexels.com/photos/38845158/pexels-photo-38845158.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--cream-50);
+      padding: 60px clamp(32px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .contact-sidebar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(44, 89, 22, .75) 0%, rgba(24, 46, 13, .65) 100%);
+      z-index: 1;
+    }
+
+    .contact-sidebar>* {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-sidebar h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Fraunces', serif;
+      margin-bottom: 24px;
+      position: relative;
+      padding-bottom: 18px;
+      z-index: 2;
+    }
+
+    .contact-sidebar h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--gold-500);
+    }
+
+    .contact-info-block {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 36px;
+      align-items: flex-start;
+    }
+
+    .contact-info-block svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold-500);
+    }
+
+    .contact-info-block div {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .contact-info-block strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-hours {
+      margin-top: 48px;
+    }
+
+    .contact-hours strong {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .contact-form-container {
+      background: rgba(24, 46, 13, .04);
+      padding: 60px clamp(32px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-form {
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 28px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(24, 46, 13, .45);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 0;
+      border: none;
+      border-bottom: 1px solid rgba(24, 46, 13, .15);
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      color: var(--ink-900);
+      background: transparent;
+      transition: border-color .3s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(24, 46, 13, .3);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-bottom-color: var(--green-800);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      padding-top: 12px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width:800px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row.full {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-row.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-submit {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green-800);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: background .3s ease, transform .2s ease, box-shadow .3s ease;
+      box-shadow: 0 4px 16px rgba(44, 89, 22, .2);
+    }
+
+    .form-submit:hover {
+      background: var(--green-900);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(44, 89, 22, .3);
+    }
+
+    .form-submit:active {
+      transform: translateY(-2px);
+    }
+
+    .form-submit svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--cream-50);
+      stroke-width: 2;
+    }
+
+    @media (max-width:900px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        margin: 28px auto 60px;
+      }
+
+      .contact-sidebar {
+        padding: 48px clamp(24px, 4vw, 40px);
+      }
+
+      .contact-form-container {
+        padding: 48px clamp(24px, 4vw, 40px);
+      }
+    }
+
+    /* ---- Footer (same as blog.html) ---- */
+    footer.site-footer {
+      position: relative;
+      background: var(--green-900);
+      color: var(--cream-50);
+      overflow: hidden;
+      padding: 100px clamp(20px, 5vw, 64px) 0;
+      margin-top: 100px;
+    }
+
+    .footer-logo-bg {
+      position: absolute;
+      right: -4%;
+      bottom: -10%;
+      width: min(720px, 70vw);
+      height: auto;
+      background-image: url('logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: .06;
+      filter: brightness(0) invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .footer-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 36px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255, 223, 92, .18);
+    }
+
+    .footer-cta-text h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      line-height: 1.25;
+      max-width: 14ch;
+      color: var(--cream-50);
+    }
+
+    .footer-cta-text h2 span {
+      color: var(--gold-500);
+    }
+
+    .footer-cta-text p {
+      margin-top: 14px;
+      font-size: 15px;
+      color: rgba(250, 246, 234, .65);
+      max-width: 38ch;
+    }
+
+    .footer-top .btn-primary {
+      background: var(--gold-500);
+      color: var(--ink-900);
+      border-color: var(--gold-500);
+      white-space: nowrap;
+    }
+
+    .footer-top .btn-primary:hover {
+      background: transparent;
+      color: var(--gold-500);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 34px;
+      border: 1px solid var(--gold-500);
+      color: var(--gold-500);
+      font-size: 13px;
+      letter-spacing: .12em;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      padding: 56px 0 48px;
+    }
+
+    .footer-col .footer-brand {
+      height: 170px;
+      width: auto;
+      margin-bottom: -38px;
+      margin-top: -20px;
+      margin-left: -40px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-col p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(250, 246, 234, .6);
+      max-width: 32ch;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 223, 92, .35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-300);
+      transition: background .3s ease, color .3s ease, border-color .3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--gold-500);
+      border-color: var(--gold-500);
+      color: var(--ink-900);
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-300);
+      margin-bottom: 22px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 13px;
+    }
+
+    .footer-col ul li a {
+      font-size: 14.5px;
+      color: rgba(250, 246, 234, .72);
+      position: relative;
+      transition: color .25s ease, padding-left .25s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold-500);
+      padding-left: 6px;
+    }
+
+    .footer-contact li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      color: rgba(250, 246, 234, .72);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact li svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold-500);
+    }
+
+    .footer-bottom {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 36px 0;
+      font-size: 13.5px;
+      color: rgba(250, 246, 234, .5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-bottom-links a {
+      position: relative;
+      color: rgba(250, 246, 234, .65);
+      transition: color .25s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--gold-500);
+    }
+
+    @media (max-width:800px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header / Nav -->
+  <header class="site-nav" id="siteNav">
+    <div class="brand">
+      <a href="index.html">
+        <img src="logo.png" alt="Miracle Interiors">
+      </a>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="service.html">Services</a>
+      <a href="work.html">Our Works</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-inner">
+      <span class="eyebrow">
+        
+        Get in Touch
+      </span>
+      <h1>Let's Bring Your Vision to Life</h1>
+      <p>We'd love to hear about your project. Reach out to discuss how we can transform your space into something
+        extraordinary.</p>
+      <div class="page-hero-crumbs">
+        <a href="index.html">Home</a>
+        <span>&nbsp;/&nbsp;</span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section (Two Column Layout) -->
+  <section class="contact-section">
+    <!-- Left Sidebar -->
+    <div class="contact-sidebar">
+      <h2>Contacts</h2>
+
+      <div class="contact-info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div>
+          <strong>Manakulangara. p.o Kodakara</strong>
+          Thrissur, PIN: 680684, India
+        </div>
+      </div>
+
+      <div class="contact-hours">
+        <strong>Mon-Sat: 9 am til 6 pm</strong>
+        Sunday: Closed
+      </div>
+
+      <div class="contact-info-block" style="margin-top:36px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M22 6l-10 7L2 6" />
+        </svg>
+        <div>
+          <a href="mailto:miracleinteriors123@gmail.com"
+            style="color:var(--cream-50);">miracleinteriors123@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-info-block" style="margin-top:16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path
+            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
+        </svg>
+        <div>
+          <a href="tel:+919497694098" style="color:var(--cream-50);">+91 94976 94098</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Form Side -->
+    <div class="contact-form-container">
+      <form class="contact-form" method="POST" action="mailto:miracleinteriors123@gmail.com">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="city">What city are you from?</label>
+            <input type="text" id="city" name="city" placeholder="Your City">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit" aria-label="Send Message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-logo-bg"></div>
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-cta-text">
+          <h2>Let's design your <span>dream space</span> together.</h2>
+          <p>Ready to transform your space? Contact us today to discuss your project and bring your vision to life.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get in Touch</a>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="logo.png" alt="Miracle Interiors" class="footer-brand">
+          <p>A creative architecture and interior design studio crafting spaces that are as functional as they are
+            beautiful.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M9.5 17c1-2.5 1.5-4.5 1.5-6a2.5 2.5 0 0 1 5 0c0 1.5-1 4-2.5 4s-1.5-1-1.2-2.3c.3-1.3.6-2.7-.8-2.7-1.6 0-2 2-2 3.3 0 .9.3 1.5.3 1.5L9.5 21" />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 13v4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="work.html">Our Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service.html">Interior Designing</a></li>
+            <li><a href="service.html">Space Planning</a></li>
+            <li><a href="service.html">Consultation</a></li>
+            <li><a href="service.html">3D Visualization</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul class="footer-contact">
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Manakulangara. p.o Kodakara, Thrissur, PIN: 680684, India</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
+              </svg>
+              <span>+91 94976 94098 &nbsp;|&nbsp; 85473 92398</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 6l-10 7L2 6" />
+              </svg>
+              <span>miracleinteriors123@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerYear"></span> Miracle Interiors. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Navbar background on scroll
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+      navLinks.classList.add('open');
+      navOverlay.classList.add('open');
+    }
+    function closeNav() {
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('open');
+    }
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.contains('open') ? closeNav() : openNav();
+    });
+    navOverlay.addEventListener('click', closeNav);
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', closeNav)
+    );
+
+    // Fade-up animation on scroll for contact section
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('fade-in');
+          }, index * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements for fade-up animation
+    const elementsToAnimate = document.querySelectorAll(
+      '.page-hero, .contact-section, .contact-sidebar h2, .contact-info-block, .contact-hours, .form-group, .form-row, .footer-top, .footer-col, .footer-bottom'
+    );
+
+    elementsToAnimate.forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+
+    // Mobile-only: also give the sidebar photo its own smooth fade-up on scroll
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      const contactSidebar = document.querySelector('.contact-sidebar');
+      if (contactSidebar) {
+        contactSidebar.style.opacity = '0';
+        observer.observe(contactSidebar);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Miracle Interiors</title>
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Jost:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --green-900: #182e0d;
+      --green-800: #2c5916;
+      --green-700: #3f7a1f;
+      --gold-500: #ffdf5c;
+      --gold-300: #f0e2ab;
+      --cream-50: #faf6ea;
+      --ink-900: #14220b;
+      --nav-h: 175px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream-50);
+      color: var(--ink-900);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    @keyframes fadeUpBg {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUpText {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header.site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 4vw, 56px);
+      transition: background .3s ease, box-shadow .3s ease, height .3s ease;
+    }
+
+    header.site-nav.scrolled {
+      background: transparent;
+      height: 135px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .brand img {
+      height: 172px;
+      width: auto;
+      transform: scaleX(1.15);
+      transform-origin: left center;
+      transition: height .3s ease;
+    }
+
+    header.site-nav.scrolled .brand img {
+      height: 130px;
+    }
+
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 2.6vw, 42px);
+    }
+
+    nav.nav-links a {
+      position: relative;
+      font-size: 14px;
+      letter-spacing: .10em;
+      color: var(--gold-300);
+      padding: 6px 0;
+      transition: color .25s ease;
+    }
+
+    nav.nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--gold-500);
+      transition: width .3s ease;
+    }
+
+    nav.nav-links a:hover {
+      color: var(--gold-500);
+    }
+
+    nav.nav-links a.active {
+      color: var(--gold-500);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      width: 26px;
+      height: 1.5px;
+      background: var(--gold-500);
+      display: block;
+    }
+
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 34, 11, .5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+      z-index: 90;
+    }
+
+    .nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width:760px) {
+      nav.nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: auto;
+        width: min(78vw, 300px);
+        height: 100vh;
+        background: var(--green-800);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        max-height: none;
+        overflow-y: auto;
+        padding-top: 90px;
+        transform: translateX(100%);
+        transition: transform .4s ease;
+        box-shadow: -14px 0 30px rgba(20, 34, 11, .3);
+        z-index: 200;
+      }
+
+      nav.nav-links.open {
+        transform: translateX(0);
+      }
+
+      nav.nav-links a {
+        width: 100%;
+        padding: 16px 28px;
+        border-top: 1px solid rgba(255, 223, 92, .12);
+      }
+
+      .nav-toggle {
+        display: flex;
+        position: relative;
+        z-index: 210;
+      }
+    }
+
+    /* ---- Page hero ---- */
+    .page-hero {
+      margin-top: 0;
+      min-height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      animation: fadeUpBg 1.2s ease-out forwards;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -8%;
+      height: 116%;
+      background-image: url('abtherobg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(15, 26, 8, .6) 0%, rgba(15, 26, 8, 0) 22%),
+        linear-gradient(90deg, rgba(15, 26, 8, .78) 0%, rgba(15, 26, 8, .52) 46%, rgba(15, 26, 8, .32) 100%),
+        linear-gradient(0deg, rgba(15, 26, 8, .55) 0%, rgba(15, 26, 8, 0) 40%);
+      z-index: 1;
+    }
+
+    .page-hero-inner {
+      width: 100%;
+      padding: 22vh clamp(24px, 6vw, 80px) 12vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero-inner .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold-300);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.1s forwards;
+    }
+
+    .page-hero-inner h1 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(2rem, 5.4vw, 4.4rem);
+      line-height: 1.16;
+      letter-spacing: .01em;
+      color: var(--cream-50);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.25s forwards;
+    }
+
+    .page-hero-inner p {
+      margin-top: 28px;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 42ch;
+      color: rgba(250, 246, 234, .82);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.45s forwards;
+    }
+
+    .page-hero-crumbs {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(250, 246, 234, .6);
+      opacity: 0;
+      animation: fadeUpText 0.8s ease-out 0.6s forwards;
+    }
+
+    .page-hero-crumbs a:hover {
+      color: var(--gold-500);
+    }
+
+    .page-hero-crumbs span {
+      color: var(--gold-500);
+    }
+
+    @media (max-width:640px) {
+      .page-hero {
+        min-height: 56vh;
+      }
+
+      .page-hero-inner {
+        padding: 20vh 24px 10vh;
+      }
+    }
+
+    /* ---- Features section ---- */
+    .features-section {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 64px);
+      color: var(--ink-900);
+      background: var(--cream-50);
+    }
+
+    .features-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .features-top {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto clamp(36px, 5vw, 56px);
+    }
+
+    .features-heading {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .features-heading.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .features-heading .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .features-heading .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .features-heading h2 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(1.6rem, 3.8vw, 2.8rem);
+      line-height: 1.22;
+      letter-spacing: .005em;
+      color: var(--green-900);
+    }
+
+    .features-bottom {
+      display: grid;
+      grid-template-columns: 1.1fr 0.85fr 0.85fr;
+      gap: 20px;
+    }
+
+    .features-video {
+      position: relative;
+      min-height: clamp(220px, 26vw, 300px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 44px rgba(20, 34, 11, .14);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .features-video.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .features-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.15);
+      transition: transform 1.4s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .features-video.in-view img {
+      transform: scale(1);
+    }
+
+    .features-video:hover img {
+      transform: scale(1.06);
+    }
+
+    .features-cards {
+      display: contents;
+    }
+
+    .features-card {
+      background: #fff;
+      border: 1px solid rgba(20, 34, 11, .08);
+      border-radius: 12px;
+      padding: clamp(20px, 2.4vw, 28px) clamp(18px, 2vw, 24px);
+      box-shadow: 0 6px 24px rgba(20, 34, 11, .06);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .9s ease, transform .9s ease, box-shadow .3s ease, transform .3s ease;
+    }
+
+    .features-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .features-card:nth-child(2) {
+      transition-delay: .12s;
+    }
+
+    .features-card:hover {
+      box-shadow: 0 16px 34px rgba(20, 34, 11, .12);
+      transform: translateY(-4px);
+    }
+
+    .features-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--cream-50);
+      color: var(--green-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .features-card-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .features-card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink-900);
+      margin-bottom: 10px;
+    }
+
+    .features-card p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(20, 34, 11, .7);
+    }
+
+    @media (max-width:980px) {
+      .features-section {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 80px;
+      }
+
+      .features-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .features-video {
+        min-height: 280px;
+      }
+    }
+
+    /* ---- How It Works / Process section ---- */
+    .process-section {
+      padding: clamp(90px, 10vw, 130px) clamp(20px, 5vw, 64px) clamp(90px, 10vw, 120px);
+      background: var(--cream-50);
+    }
+
+    .process-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .process-top {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(28px, 4vw, 60px);
+      align-items: center;
+      margin-bottom: clamp(56px, 7vw, 88px);
+    }
+
+    .process-heading {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .process-heading.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .process-heading .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .process-heading .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .process-heading h2 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+      line-height: 1.2;
+      color: var(--green-900);
+    }
+
+    .process-copy {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease .1s, transform .9s ease .1s;
+    }
+
+    .process-copy.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .process-copy p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(20, 34, 11, .7);
+      margin-bottom: 26px;
+      max-width: 48ch;
+    }
+
+    .process-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-500), var(--gold-300));
+      color: var(--green-900);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .01em;
+      box-shadow: 0 14px 28px rgba(255, 223, 92, .28);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .process-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(255, 223, 92, .36);
+    }
+
+    .process-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .process-card {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #e8dcc7;
+      padding: clamp(26px, 2.6vw, 30px) clamp(24px, 2.6vw, 28px);
+      box-shadow: 0 6px 24px rgba(20, 34, 11, .07);
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity .8s ease, transform .8s ease, box-shadow .35s ease;
+    }
+
+    .process-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(100%);
+      transition: transform .65s cubic-bezier(.22, .61, .36, 1);
+      z-index: 0;
+    }
+
+    .process-card:hover .process-card-bg {
+      transform: translateY(0);
+    }
+
+    .process-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 26, 8, .1) 0%, rgba(15, 26, 8, .5) 55%, rgba(15, 26, 8, .86) 100%);
+      opacity: 0;
+      transition: opacity .5s ease .12s;
+      z-index: 0;
+    }
+
+    .process-card:hover .process-card-overlay {
+      opacity: 1;
+    }
+
+    .process-card>h3,
+    .process-card>p,
+    .process-card>.process-divider,
+    .process-card>.process-list {
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-card.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .process-card:nth-child(1) {
+      transition-delay: 0s;
+    }
+
+    .process-card:nth-child(2) {
+      transition-delay: .12s;
+    }
+
+    .process-card:nth-child(3) {
+      transition-delay: .24s;
+    }
+
+    .process-card:nth-child(4) {
+      transition-delay: .36s;
+    }
+
+    .process-card:hover {
+      box-shadow: 0 16px 34px rgba(20, 34, 11, .2);
+      transform: translateY(-6px);
+    }
+
+    .process-card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 21px;
+      color: var(--ink-900);
+      margin-bottom: 14px;
+      transition: color .4s ease;
+    }
+
+    .process-card p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: rgba(20, 34, 11, .68);
+      margin-bottom: 22px;
+      transition: color .4s ease;
+    }
+
+    .process-card:hover h3 {
+      color: var(--cream-50);
+    }
+
+    .process-card:hover p {
+      color: rgba(250, 246, 234, .85);
+    }
+
+    .process-divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: rgba(20, 34, 11, .12);
+      transition: background .4s ease;
+    }
+
+    .process-card:hover .process-divider {
+      background: rgba(250, 246, 234, .3);
+    }
+
+    .process-list {
+      margin-top: 16px;
+    }
+
+    .process-list li {
+      position: relative;
+      list-style: none;
+      padding-left: 16px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(20, 34, 11, .65);
+      margin-bottom: 8px;
+      transition: color .4s ease;
+    }
+
+    .process-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      background: var(--gold-500);
+      transition: background .4s ease;
+    }
+
+    .process-card:hover .process-list li {
+      color: rgba(250, 246, 234, .85);
+    }
+
+    @media (max-width:980px) {
+      .process-top {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width:640px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- Story / Mission & Vision section ---- */
+    .story-section {
+      padding: 120px clamp(20px, 5vw, 64px) 130px;
+      background: var(--cream-50);
+    }
+
+    .story-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .story-media {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .story-media-main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 78%;
+      height: 64%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(20, 34, 11, .18);
+      opacity: 0;
+      transform: translate(-40px, 20px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .story-media-main.in-view {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .story-media-second {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 62%;
+      height: 56%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 8px solid var(--cream-50);
+      box-shadow: 0 30px 60px rgba(20, 34, 11, .22);
+      opacity: 0;
+      transform: translate(40px, 40px);
+      transition: opacity .9s ease .15s, transform .9s ease .15s;
+    }
+
+    .story-media-second.in-view {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .story-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-copy {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease .1s, transform .9s ease .1s;
+    }
+
+    .story-copy.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-copy .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .story-copy .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .story-copy h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      line-height: 1.2;
+      color: var(--green-900);
+      margin-bottom: 24px;
+    }
+
+    .story-copy>p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(20, 34, 11, .72);
+      max-width: 52ch;
+      margin-bottom: 30px;
+    }
+
+    .story-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+      margin-bottom: 44px;
+    }
+
+    .story-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .story-point-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--green-800);
+      color: var(--gold-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .story-point-icon svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .story-point p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--green-900);
+    }
+
+    .story-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .story-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 28px;
+      box-shadow: 0 6px 24px rgba(20, 34, 11, .06);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease, box-shadow .35s ease;
+    }
+
+    .story-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-card:nth-child(2) {
+      transition-delay: .12s;
+    }
+
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 34px rgba(20, 34, 11, .12);
+    }
+
+    .story-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .story-card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 21px;
+      color: var(--ink-900);
+    }
+
+    .story-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream-50);
+      color: var(--green-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .story-card-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .story-card p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: rgba(20, 34, 11, .7);
+      margin-bottom: 16px;
+    }
+
+    .story-divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: rgba(20, 34, 11, .1);
+      margin-bottom: 16px;
+    }
+
+    .story-card .story-goal {
+      font-size: 13px;
+      letter-spacing: .02em;
+      color: var(--green-800);
+      font-weight: 500;
+    }
+
+    @media (max-width:980px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Mobile: show the paragraph/copy first, image after */
+      .story-copy {
+        order: 1;
+      }
+
+      .story-media {
+        order: 2;
+        min-height: 440px;
+        max-width: 520px;
+        width: 100%;
+        margin: 32px auto 0;
+      }
+
+      /* Mobile: guarantee the images are visible even if the
+         scroll-reveal animation/observer doesn't fire */
+      .story-media-main,
+      .story-media-second {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width:640px) {
+      .story-section {
+        padding: 90px 20px 100px;
+      }
+
+      .story-points,
+      .story-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .story-media {
+        min-height: 300px;
+        max-width: 420px;
+      }
+    }
+
+    /* ---- Design Philosophy section ---- */
+    .philosophy-section {
+      padding: 0 clamp(20px, 5vw, 64px) 140px;
+      background: var(--cream-50);
+    }
+
+    .philosophy-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .philosophy-copy {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .philosophy-copy.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .philosophy-copy .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .philosophy-copy .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .philosophy-copy h2 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+      line-height: 1.28;
+      letter-spacing: .005em;
+      color: var(--ink-900);
+      margin-bottom: 26px;
+    }
+
+    .philosophy-copy>p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(20, 34, 11, .72);
+      max-width: 52ch;
+      margin-bottom: 20px;
+    }
+
+    .philosophy-copy>p strong {
+      color: var(--green-800);
+      font-weight: 600;
+    }
+
+    .philosophy-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin: 36px 0 40px;
+    }
+
+    .philosophy-badge {
+      position: relative;
+      width: 92px;
+      height: 92px;
+      flex-shrink: 0;
+    }
+
+    .philosophy-badge svg.spin {
+      width: 100%;
+      height: 100%;
+      animation: spinSlow 14s linear infinite;
+    }
+
+    .philosophy-badge .badge-core {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-800);
+      font-size: 22px;
+    }
+
+    @keyframes spinSlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .philosophy-badge-text h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink-900);
+      margin-bottom: 4px;
+    }
+
+    .philosophy-badge-text p {
+      font-size: 13.5px;
+      color: rgba(20, 34, 11, .6);
+    }
+
+    .philosophy-sub h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--green-900);
+      margin-bottom: 10px;
+    }
+
+    .philosophy-sub p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(20, 34, 11, .68);
+      max-width: 52ch;
+      margin-bottom: 30px;
+    }
+
+    .philosophy-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .progress-item .progress-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .progress-item .progress-label span:first-child {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      color: var(--ink-900);
+    }
+
+    .progress-item .progress-label span:last-child {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green-800);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(20, 34, 11, .1);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--green-700), var(--gold-500));
+      transition: width 1.4s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .progress-item.in-view .progress-fill {
+      width: var(--fill);
+    }
+
+    .philosophy-media {
+      position: relative;
+      min-height: 560px;
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .philosophy-media.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .philosophy-img-main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 82%;
+      height: 78%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(20, 34, 11, .2);
+      opacity: 0;
+      transform: translateY(40px) scale(1.04);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .philosophy-img-main.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .philosophy-img-small {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 54%;
+      height: 44%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 8px solid var(--cream-50);
+      box-shadow: 0 24px 48px rgba(20, 34, 11, .25);
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(50px) scale(1.06);
+      transition: opacity 1s ease .2s, transform 1s ease .2s;
+    }
+
+    .philosophy-img-small.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .philosophy-img-inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .philosophy-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.18);
+      transition: transform 1.4s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .philosophy-img-main.in-view img,
+    .philosophy-img-small.in-view img {
+      transform: scale(1);
+    }
+
+    .philosophy-media:hover .philosophy-img-main.in-view img {
+      transform: scale(1.06);
+    }
+
+    .philosophy-media:hover .philosophy-img-small.in-view img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width:980px) {
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Mobile: show the paragraph/copy first, image after */
+      .philosophy-copy {
+        order: 1;
+      }
+
+      .philosophy-media {
+        order: 2;
+        min-height: 440px;
+        max-width: 520px;
+        width: 100%;
+        margin: 32px auto 0;
+      }
+
+      /* Mobile: guarantee the images are visible even if the
+         scroll-reveal animation/observer doesn't fire */
+      .philosophy-media,
+      .philosophy-img-main,
+      .philosophy-img-small {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width:640px) {
+      .philosophy-section {
+        padding: 0 20px 100px;
+      }
+
+      .philosophy-badge-row {
+        gap: 16px;
+      }
+
+      .philosophy-media {
+        min-height: 300px;
+        max-width: 420px;
+      }
+    }
+
+    /* ---- FAQ section ---- */
+    .faq-section {
+      padding: clamp(80px, 9vw, 120px) clamp(20px, 5vw, 64px);
+      background: var(--cream-50);
+    }
+
+    .faq-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+
+    .faq-left {
+      position: sticky;
+      top: 140px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .faq-left.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .faq-left .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .faq-left .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .faq-left h2 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      line-height: 1.18;
+      letter-spacing: .005em;
+      color: var(--ink-900);
+      margin-bottom: clamp(36px, 5vw, 64px);
+    }
+
+    .faq-badge {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-800);
+    }
+
+    .faq-badge svg.badge-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      animation: faqSpin 14s linear infinite;
+    }
+
+    .faq-badge svg.badge-ring path {
+      fill: none;
+    }
+
+    .faq-badge svg.badge-ring text {
+      font-family: 'Jost', sans-serif;
+      font-size: 8.6px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      fill: var(--green-800);
+    }
+
+    .faq-badge-icon {
+      position: relative;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq-badge-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    @keyframes faqSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .faq-item.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .faq-item:nth-child(2) {
+      transition-delay: .06s;
+    }
+
+    .faq-item:nth-child(3) {
+      transition-delay: .12s;
+    }
+
+    .faq-item:nth-child(4) {
+      transition-delay: .18s;
+    }
+
+    .faq-item:nth-child(5) {
+      transition-delay: .24s;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: clamp(22px, 2.6vw, 28px) 4px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: clamp(16px, 1.6vw, 20px);
+      color: var(--ink-900);
+    }
+
+    .faq-question .faq-chevron {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--gold-500);
+      transition: transform .35s ease;
+    }
+
+    .faq-item.open .faq-question .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 30px 26px 4px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(20, 34, 11, .7);
+      max-width: 640px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 260px;
+    }
+
+    @media (max-width:980px) {
+      .faq-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-left {
+        position: static;
+      }
+
+      .faq-badge {
+        margin-top: 32px;
+      }
+    }
+
+    /* ---- Testimonials section ---- */
+    .testimonials-section {
+      padding: clamp(80px, 9vw, 120px) clamp(20px, 5vw, 64px) clamp(80px, 9vw, 120px);
+      background: var(--cream-50);
+      overflow: hidden;
+    }
+
+    .testimonials-inner {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .testimonials-top {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto clamp(48px, 6vw, 72px);
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .testimonials-top.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonials-top .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+
+    .testimonials-top .eyebrow-icon {
+      color: var(--gold-500);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .testimonials-heading-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 1.6vw, 18px);
+    }
+
+    .testimonials-top h2 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+      line-height: 1.18;
+      letter-spacing: .005em;
+      color: var(--ink-900);
+      margin: 0;
+    }
+
+    .testimonials-nav {
+      margin: 28px 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .testimonials-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(20, 34, 11, .18);
+      background: transparent;
+      color: var(--ink-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .25s ease, border-color .25s ease, color .25s ease;
+    }
+
+    .testimonials-nav-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .testimonials-nav-btn:hover {
+      background: var(--ink-900);
+      border-color: var(--ink-900);
+      color: var(--cream-50);
+    }
+
+    .testimonials-nav-btn:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    .testimonials-nav-btn:disabled:hover {
+      background: transparent;
+      color: var(--ink-900);
+      border-color: rgba(20, 34, 11, .18);
+    }
+
+    .testimonials-track-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .testimonials-track {
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 4px 0 20px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .testimonials-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonials-card {
+      flex: 0 0 calc((100% - 40px) / 3);
+      min-width: 0;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      border-radius: 14px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .testimonials-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonials-card:nth-child(2) {
+      transition-delay: .08s;
+    }
+
+    .testimonials-card:nth-child(3) {
+      transition-delay: .16s;
+    }
+
+    .testimonials-card:nth-child(4) {
+      transition-delay: .24s;
+    }
+
+    .testimonials-card:nth-child(5) {
+      transition-delay: .32s;
+    }
+
+    .testimonials-card.is-photo {
+      min-height: 360px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-card.is-quote {
+      background: #fff;
+      border: 1px solid rgba(20, 34, 11, .08);
+      padding: clamp(22px, 2.4vw, 28px) clamp(20px, 2vw, 24px);
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      box-shadow: 0 6px 24px rgba(20, 34, 11, .06);
+    }
+
+    .testimonials-stars {
+      display: flex;
+      gap: 3px;
+      color: var(--gold-500);
+      margin-bottom: clamp(18px, 2.2vw, 26px);
+    }
+
+    .testimonials-stars svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .testimonials-quote-text {
+      font-family: 'Jost', sans-serif;
+      font-style: italic;
+      font-size: clamp(14.5px, 1.4vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-900);
+      flex: 1;
+    }
+
+    .testimonials-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: clamp(16px, 2vw, 22px);
+      padding-top: 16px;
+      border-top: 1px solid rgba(20, 34, 11, .1);
+    }
+
+    .testimonials-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-800);
+      color: var(--cream-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .testimonials-person strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-900);
+    }
+
+    .testimonials-person span {
+      font-size: 12.5px;
+      color: rgba(20, 34, 11, .6);
+    }
+
+    @media (max-width:980px) {
+      .testimonials-card {
+        flex-basis: calc((100% - 20px) / 2);
+      }
+    }
+
+    @media (max-width:640px) {
+      /* Center the review card in the carousel on mobile */
+      .testimonials-track {
+        padding: 4px 8% 20px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .testimonials-card {
+        flex-basis: 84%;
+        scroll-snap-align: center;
+      }
+
+      .testimonials-card.is-photo,
+      .testimonials-card.is-quote {
+        min-height: 340px;
+      }
+    }
+
+    /* ---- Footer (same as index) ---- */
+    footer.site-footer {
+      position: relative;
+      background: var(--green-900);
+      color: var(--cream-50);
+      overflow: hidden;
+      padding: 100px clamp(20px, 5vw, 64px) 0;
+    }
+
+    .footer-logo-bg {
+      position: absolute;
+      right: -4%;
+      bottom: -10%;
+      width: min(720px, 70vw);
+      height: auto;
+      background-image: url('logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: .06;
+      filter: brightness(0) invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .footer-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 36px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255, 223, 92, .18);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .footer-top.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-cta-text h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      line-height: 1.25;
+      max-width: 14ch;
+      color: var(--cream-50);
+    }
+
+    .footer-cta-text h2 span {
+      color: var(--gold-500);
+    }
+
+    .footer-cta-text p {
+      margin-top: 14px;
+      font-size: 15px;
+      color: rgba(250, 246, 234, .65);
+      max-width: 38ch;
+    }
+
+    .footer-top .btn-primary {
+      background: var(--gold-500);
+      color: var(--ink-900);
+      border-color: var(--gold-500);
+      white-space: nowrap;
+    }
+
+    .footer-top .btn-primary:hover {
+      background: transparent;
+      color: var(--gold-500);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 34px;
+      border: 1px solid var(--gold-500);
+      color: var(--gold-500);
+      font-size: 13px;
+      letter-spacing: .12em;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      padding: 56px 0 48px;
+    }
+
+    .footer-col {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .footer-col.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-col:nth-child(2) { transition-delay: .08s; }
+    .footer-col:nth-child(3) { transition-delay: .16s; }
+    .footer-col:nth-child(4) { transition-delay: .24s; }
+
+    .footer-col .footer-brand {
+      height: 170px;
+      width: auto;
+      margin-bottom: -38px;
+      margin-top: -20px;
+      margin-left: -40px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-col p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(250, 246, 234, .6);
+      max-width: 32ch;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 223, 92, .35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-300);
+      transition: background .3s ease, color .3s ease, border-color .3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--gold-500);
+      border-color: var(--gold-500);
+      color: var(--ink-900);
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-300);
+      margin-bottom: 22px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 13px;
+    }
+
+    .footer-col ul li a {
+      font-size: 14.5px;
+      color: rgba(250, 246, 234, .72);
+      position: relative;
+      transition: color .25s ease, padding-left .25s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold-500);
+      padding-left: 6px;
+    }
+
+    .footer-contact li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      color: rgba(250, 246, 234, .72);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact li svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold-500);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 26px 0;
+      border-top: 1px solid rgba(255, 223, 92, .14);
+      font-size: 12.5px;
+      letter-spacing: .03em;
+      color: rgba(250, 246, 234, .5);
+    }
+
+    .footer-bottom a {
+      color: rgba(250, 246, 234, .5);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--gold-500);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width:900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width:600px) {
+      footer.site-footer {
+        padding: 70px 20px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-logo-bg {
+        width: 90vw;
+        bottom: -6%;
+        opacity: .05;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Miracle Interiors">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="service.html">Services</a>
+      <a href="work.html">Our Works</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <section class="page-hero" id="home">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-inner">
+      <span class="eyebrow">About Us</span>
+      <h1>Designing homes<br>that feel like you</h1>
+      <p>Miracle Interiors is a design studio shaping warm, considered spaces — get to know the people and philosophy
+        behind every room we build.</p>
+      <div class="page-hero-crumbs">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section" id="story">
+    <div class="story-grid">
+      <div class="story-media">
+        <figure class="story-media-main">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
+            alt="Curated living room styling">
+        </figure>
+        <figure class="story-media-second">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+            alt="Bright modern interior">
+        </figure>
+      </div>
+
+      <div class="story-copy">
+        <span class="eyebrow"><span class="eyebrow-icon"></span>About Us</span>
+        <h2>Designing spaces that<br>feel like luxury home</h2>
+        <p>We create elegant, high-end interiors that reflect comfort, sophistication, and timeless beauty — turning
+          everyday living into a luxurious experience, one room at a time.</p>
+
+        <div class="story-points">
+          <div class="story-point">
+            <span class="story-point-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <p>We ensure every project reflects both comfort and beauty.</p>
+          </div>
+          <div class="story-point">
+            <span class="story-point-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <p>We create spaces that are stylish, functional and efficient.</p>
+          </div>
+        </div>
+
+        <div class="story-cards">
+          <div class="story-card">
+            <div class="story-card-top">
+              <h3>Our Mission</h3>
+              <span class="story-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 2l3 6 6 1-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.6L3 9l6-1 3-6z" />
+                </svg>
+              </span>
+            </div>
+            <p>Our mission is to craft refined, functional living spaces that redefine everyday comfort.</p>
+            <span class="story-divider"></span>
+            <span class="story-goal">To deliver thoughtfully crafted, lasting design</span>
+          </div>
+
+          <div class="story-card">
+            <div class="story-card-top">
+              <h3>Our Vision</h3>
+              <span class="story-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="12" cy="12" r="0.6" fill="currentColor" />
+                </svg>
+              </span>
+            </div>
+            <p>Our vision is to become a trusted leader in architecture and interior design.</p>
+            <span class="story-divider"></span>
+            <span class="story-goal">To redefine modern living through design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy-section" id="philosophy">
+    <div class="philosophy-grid">
+      <div class="philosophy-copy">
+        <span class="eyebrow"><span class="eyebrow-icon"></span>Our Design Philosophy</span>
+        <h2>Crafting architecture<br>and interiors with purpose</h2>
+        <p>Every space we design is guided by one idea: <strong>functionality, aesthetics, comfort and
+            personalization</strong> should never compete — they should work as one. We start with how a room needs to
+          function, layer in materials and light that feel considered rather than decorative, and finish with details
+          that make a space unmistakably yours.</p>
+
+        <div class="philosophy-badge-row">
+          <div class="philosophy-badge">
+            <svg class="spin" viewBox="0 0 100 100">
+              <defs>
+                <path id="badgeCircle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"></path>
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="none" stroke="var(--green-800)" stroke-width="1"></circle>
+              <text font-size="8.3" letter-spacing="2" fill="var(--green-800)">
+                <textPath href="#badgeCircle" startOffset="0%">DESIGN WITH PURPOSE • DESIGN WITH PURPOSE •</textPath>
+              </text>
+            </svg>
+            <span class="badge-core">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 2l3 6 6 1-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.6L3 9l6-1 3-6z" />
+              </svg>
+            </span>
+          </div>
+          <div class="philosophy-badge-text">
+            <h4>Considered, Not Decorated</h4>
+            <p>Design led by how a space is actually lived in.</p>
+          </div>
+        </div>
+
+        <div class="philosophy-sub">
+          <h3>A Process You Can Trust</h3>
+          <p>From the first floor plan to the final styling detail, we balance the practical with the beautiful — so
+            every room performs as well as it looks.</p>
+        </div>
+
+        <div class="philosophy-bars">
+          <div class="progress-item" style="--fill:92%">
+            <div class="progress-label">
+              <span>Functionality &amp; Aesthetics</span>
+              <span>92%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+          <div class="progress-item" style="--fill:96%">
+            <div class="progress-label">
+              <span>Comfort &amp; Personalization</span>
+              <span>96%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="philosophy-media">
+        <figure class="philosophy-img-main">
+          <div class="philosophy-img-inner">
+            <img src="https://images.pexels.com/photos/28853343/pexels-photo-28853343.jpeg" alt="Green velvet living room with warm lighting">
+          </div>
+        </figure>
+        <figure class="philosophy-img-small">
+          <div class="philosophy-img-inner">
+            <img src="https://images.pexels.com/photos/32178067/pexels-photo-32178067.png"
+              alt="Elegant neutral living room styling detail">
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section" id="process">
+    <div class="process-inner">
+      <div class="process-top">
+        <div class="process-heading">
+          <span class="eyebrow"><span class="eyebrow-icon"></span>How It Works</span>
+          <h2>Transforming your ideas into stunning spaces</h2>
+        </div>
+        <div class="process-copy">
+          <p>From initial consultation to final execution, our structured design process ensures every project is
+            handled with creativity, precision, and attention to detail.</p>
+          <a href="mailto:miracleinteriors123@gmail.com" class="process-cta">
+            Contact Us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M9 7h8v8" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-card-bg"
+            style="background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80')">
+          </div>
+          <div class="process-card-overlay"></div>
+          <h3>Consultation</h3>
+          <p>We begin by understanding your life style, preferences, &amp; goals.</p>
+          <span class="process-divider"></span>
+          <ul class="process-list">
+            <li>Capturing Your Unique Vision</li>
+            <li>Assessing Space</li>
+          </ul>
+        </div>
+        <div class="process-card">
+          <div class="process-card-bg"
+            style="background-image:url('https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=700&q=80')">
+          </div>
+          <div class="process-card-overlay"></div>
+          <h3>Concept Development</h3>
+          <p>Our team creates mood boards, layout sketches, etc.</p>
+          <span class="process-divider"></span>
+          <ul class="process-list">
+            <li>Visualizing the Final Space in 3D</li>
+            <li>Integrating Functionality</li>
+          </ul>
+        </div>
+        <div class="process-card">
+          <div class="process-card-bg"
+            style="background-image:url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=80')">
+          </div>
+          <div class="process-card-overlay"></div>
+          <h3>Design Execution</h3>
+          <p>From material selection to furniture, lighting, and d&eacute;cor.</p>
+          <span class="process-divider"></span>
+          <ul class="process-list">
+            <li>Ensuring Functional Excellence</li>
+            <li>Managing Timelines</li>
+          </ul>
+        </div>
+        <div class="process-card">
+          <div class="process-card-bg"
+            style="background-image:url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=700&q=80')">
+          </div>
+          <div class="process-card-overlay"></div>
+          <h3>Final Reveal</h3>
+          <p>We conduct a final walkthrough to ensure everything meets.</p>
+          <span class="process-divider"></span>
+          <ul class="process-list">
+            <li>Client Walkthrough &amp; Feedback</li>
+            <li>Presenting the Space</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="features-inner">
+      <div class="features-top">
+        <div class="features-heading">
+          <span class="eyebrow"><span class="eyebrow-icon"></span>Our Features</span>
+          <h2>Creating functional, stylish, &amp; timeless spaces</h2>
+        </div>
+      </div>
+
+      <div class="features-bottom">
+        <figure class="features-video">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
+            alt="Styled living room with soft furnishings">
+        </figure>
+
+        <div class="features-cards">
+          <div class="features-card">
+            <span class="features-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+            </span>
+            <h3>Cutting Edge Technology</h3>
+            <p>Utilizing the latest software for 3D models and virtual walkthroughs.</p>
+          </div>
+          <div class="features-card">
+            <span class="features-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M3 12h4l2-7 4 14 2-7h6" />
+              </svg>
+            </span>
+            <h3>Timely Project Delivery</h3>
+            <p>Our project management ensures that all timelines are met.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <span class="eyebrow"><span class="eyebrow-icon"></span>Frequently Asked Questions</span>
+        <h2>Your design questions clearly explained</h2>
+        <a href="mailto:miracleinteriors123@gmail.com" class="faq-badge" aria-label="Contact Us">
+          <svg class="badge-ring" viewBox="0 0 100 100">
+            <path id="faqBadgeCircle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"></path>
+            <text>
+              <textPath href="#faqBadgeCircle">Contact Us &#8226; Contact Us &#8226; Contact Us &#8226; </textPath>
+            </text>
+          </svg>
+          <span class="faq-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M7 17L17 7M9 7h8v8" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can you work with my existing furniture or layout?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, we love working with pieces you already own. We'll assess what fits your new layout and design
+              around it, so your space feels fresh without starting from zero.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            What is the estimated cost for a design project?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Costs vary depending on the size, scope, and finishes of your project. After an initial consultation, we
+              provide a detailed estimate tailored to your budget and goals.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Do you offer both residential and commercial design services?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Our team designs homes, apartments, offices, and retail spaces alike, adapting our process to
+              suit the unique needs of each project type.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Will I be involved in selecting materials and finishes?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Definitely. We present curated options and walk you through every material and finish decision, ensuring
+              the final result reflects your taste and lifestyle.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            Can you handle end-to-end execution along with design?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, we manage the full journey from concept to completion, coordinating contractors, vendors, and
+              timelines so you can enjoy a seamless, stress-free experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-top">
+        <span class="eyebrow"><span class="eyebrow-icon"></span>Our Testimonials</span>
+        <div class="testimonials-heading-row">
+          <h2>Voices of appreciation from our happy clients</h2>
+        </div>
+      </div>
+
+      <div class="testimonials-track-wrap">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonials-card is-photo"
+            style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80')">
+          </div>
+
+          <div class="testimonials-card is-quote">
+            <div class="testimonials-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+            </div>
+            <p class="testimonials-quote-text">"Absolutely impressed with Miracle Interior! From the first consultation
+              to the final reveal, the team was professional, creative, and truly passionate about their work. They
+              understood my vision perfectly and transformed my home into a space that feels both elegant and deeply
+              personal. Highly recommended for anyone looking to give their space a stunning makeover."</p>
+            <div class="testimonials-person">
+              <span class="testimonials-avatar">N</span>
+              <div>
+                <strong>Nikhil George</strong>
+                <span>Residential Project</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-card is-quote">
+            <div class="testimonials-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+            </div>
+            <p class="testimonials-quote-text">"This is the best company in Kerala. They provided good service and
+              correct timing and fitting. I recommend them 100%. Thank you Miracle Interiors."</p>
+            <div class="testimonials-person">
+              <span class="testimonials-avatar">J</span>
+              <div>
+                <strong>Johnji George</strong>
+                <span>Residential Project</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-card is-quote">
+            <div class="testimonials-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+            </div>
+            <p class="testimonials-quote-text">"Very good work I am very happy."</p>
+            <div class="testimonials-person">
+              <span class="testimonials-avatar">P</span>
+              <div>
+                <strong>Prabinkumar Prabii</strong>
+                <span>Residential Project</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-card is-quote">
+            <div class="testimonials-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+            </div>
+            <p class="testimonials-quote-text">"Beautiful designs and excellent execution. They truly understand what
+              clients want!"</p>
+            <div class="testimonials-person">
+              <span class="testimonials-avatar">J</span>
+              <div>
+                <strong>Jithin Jose</strong>
+                <span>Residential Project</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-nav">
+        <button class="testimonials-nav-btn" id="testimonialsPrev" aria-label="Previous testimonial" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <button class="testimonials-nav-btn" id="testimonialsNext" aria-label="Next testimonial" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-logo-bg"></div>
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-cta-text">
+          <h2>Let's Create Something <span>Amazing Together</span></h2>
+          <p>Ready to transform your space? Contact us today to discuss your project and bring your vision to life.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get in Touch</a>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="logo.png" alt="Miracle Interiors" class="footer-brand">
+          <p>A creative architecture and interior design studio crafting spaces that are as functional as they are
+            beautiful.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M9.5 17c1-2.5 1.5-4.5 1.5-6a2.5 2.5 0 0 1 5 0c0 1.5-1 4-2.5 4s-1.5-1-1.2-2.3c.3-1.3.6-2.7-.8-2.7-1.6 0-2 2-2 3.3 0 .9.3 1.5.3 1.5L9.5 21" />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 13v4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="work.html">Our Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service.html">Interior Designing</a></li>
+            <li><a href="service.html">Space Planning</a></li>
+            <li><a href="service.html">Consultation</a></li>
+            <li><a href="service.html">3D Visualization</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul class="footer-contact">
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Manakulangara. p.o Kodakara, Thrissur, PIN: 680684, India</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" />
+              </svg>
+              <span>+91 94976 94098 &nbsp;|&nbsp; 85473 92398</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 6l-10 7L2 6" />
+              </svg>
+              <span>miracleinteriors123@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerYear"></span> Miracle Interiors. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Navbar background on scroll
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+      navLinks.classList.add('open');
+      navOverlay.classList.add('open');
+    }
+    function closeNav() {
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('open');
+    }
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.contains('open') ? closeNav() : openNav();
+    });
+    navOverlay.addEventListener('click', closeNav);
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', closeNav)
+    );
+
+    // Reveal How It Works process section pieces on scroll
+    const processReveal = document.querySelectorAll('.process-heading, .process-copy, .process-card');
+    const processObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          processObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+    processReveal.forEach(el => processObserver.observe(el));
+
+    // Reveal story section pieces on scroll
+    const featuresReveal = document.querySelectorAll('.features-heading, .features-video, .features-card');
+    const featuresObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          featuresObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+    featuresReveal.forEach(el => featuresObserver.observe(el));
+
+    const storyReveal = document.querySelectorAll('.story-media-main, .story-media-second, .story-copy, .story-card');
+    const storyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          storyObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+    storyReveal.forEach(el => storyObserver.observe(el));
+
+    // Reveal design philosophy section pieces on scroll
+    const philosophyReveal = document.querySelectorAll('.philosophy-copy, .philosophy-media, .philosophy-img-main, .philosophy-img-small, .progress-item');
+
+    const philosophyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          philosophyObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+    philosophyReveal.forEach(el => philosophyObserver.observe(el));
+
+    // Gentle parallax drift on the philosophy section images as you scroll
+    const philosophyParallax = document.querySelectorAll('.philosophy-img-inner');
+    let philoParallaxTicking = false;
+
+    function updatePhilosophyParallax() {
+      const vh = window.innerHeight;
+      philosophyParallax.forEach((el, i) => {
+        const rect = el.parentElement.getBoundingClientRect();
+        const strength = i === 0 ? 0.06 : -0.08;
+        const offset = (rect.top - vh / 2) * strength;
+        el.style.transform = `translateY(${offset}px)`;
+      });
+      philoParallaxTicking = false;
+    }
+
+    function requestPhilosophyParallax() {
+      if (!philoParallaxTicking) {
+        philoParallaxTicking = true;
+        requestAnimationFrame(updatePhilosophyParallax);
+      }
+    }
+
+    window.addEventListener('scroll', requestPhilosophyParallax, { passive: true });
+    window.addEventListener('resize', requestPhilosophyParallax);
+    requestPhilosophyParallax();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(open => {
+          if (open !== item) open.classList.remove('open');
+        });
+        item.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Reveal FAQ section pieces on scroll
+    const faqReveal = document.querySelectorAll('.faq-left, .faq-item');
+    const faqObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          faqObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+    faqReveal.forEach(el => faqObserver.observe(el));
+
+    // Reveal Testimonials section pieces on scroll
+    const testimonialsReveal = document.querySelectorAll('.testimonials-top, .testimonials-card');
+    const testimonialsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          testimonialsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+    testimonialsReveal.forEach(el => testimonialsObserver.observe(el));
+
+    // Reveal footer pieces on scroll
+    const footerReveal = document.querySelectorAll('.footer-top, .footer-col');
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          footerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    footerReveal.forEach(el => footerObserver.observe(el));
+
+    // Testimonials prev/next controls
+    const testimonialsTrack = document.getElementById('testimonialsTrack');
+    const testimonialsPrev = document.getElementById('testimonialsPrev');
+    const testimonialsNext = document.getElementById('testimonialsNext');
+
+    function testimonialsScrollStep() {
+      const card = testimonialsTrack.querySelector('.testimonials-card');
+      if (!card) return 0;
+      const gap = parseFloat(getComputedStyle(testimonialsTrack).gap) || 20;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function updateTestimonialsNavState() {
+      const maxScroll = testimonialsTrack.scrollWidth - testimonialsTrack.clientWidth - 2;
+      testimonialsPrev.disabled = testimonialsTrack.scrollLeft <= 2;
+      testimonialsNext.disabled = testimonialsTrack.scrollLeft >= maxScroll;
+    }
+
+    if (testimonialsTrack && testimonialsPrev && testimonialsNext) {
+      testimonialsPrev.addEventListener('click', () => {
+        testimonialsTrack.scrollBy({ left: -testimonialsScrollStep(), behavior: 'smooth' });
+      });
+      testimonialsNext.addEventListener('click', () => {
+        testimonialsTrack.scrollBy({ left: testimonialsScrollStep(), behavior: 'smooth' });
+      });
+      testimonialsTrack.addEventListener('scroll', updateTestimonialsNavState, { passive: true });
+      window.addEventListener('resize', updateTestimonialsNavState);
+      updateTestimonialsNavState();
+    }
+  </script>
+</body>
+
+</html>
